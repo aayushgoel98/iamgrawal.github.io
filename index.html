@@ -481,27 +481,6 @@
 		<!-- Javascript main files -->
         <script src="js/main.js"></script>
 
-        <script type="text/javascript">
-        	var yourAudio = docume nt.getEleme ntById('yourAudio'),
-		    ctrl = docume nt.getEleme ntById('audioControl1');
-			ctrl.onclick = function () {
-			    // Update the Button
-			    if(ctrl.getAttribute('src') === 'img/pause.png'){
-			    	var pause = ctrl.getAttribute('src') === 'img/pause.png';
-			    	ctrl.src = 'img/play.png';
-			    	var me thod = pause ? 'pause' : 'play';
-			    	yourAudio[me thod]();
-			    }
-			    else{
-			    	var play = ctrl.getAttribute('src') === 'img/play.png';
-			    	ctrl.src = 'img/pause.png';
-			    	var me thod = play ? 'play' : 'pause';
-			    	yourAudio[me thod]();
-			    }
-
-			    // Prevent Default Action
-			    return false;
-			};
-        </script>
+        
     </body>
 </html>

@@ -1,0 +1,6 @@
+body {
+  font-size: 16px;
+  overflow: hidden;
+  background: rgb(185,23,239);
+  background: linear-gradient(90deg, rgba(185,23,239,1) 0%, rgba(153,204,255,1) 100%);
+}

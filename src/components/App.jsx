@@ -1,18 +1,48 @@
 import React, { Component } from 'react';
+import styled, { injectGlobal } from 'styled-components';
+import Sidebar from './sidebar/sidebar';
 import './App.css';
+import Main from './main/main';
+
+injectGlobal`
+  @font-face {
+    font-family: 'Monsterrat';
+    src: url('../fonts/Operator-Mono.ttf');
+  }
+`;
+
+const ContainerWrapper = styled.div`
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 85%;
+  width: 85%;
+  position: absolute;
+  border-radius: 20px;
+  background-color: #fff;
+  font-family: 'monsteratt'
+`;
 
 class App extends Component {
   createBubbles = () => {
     let bubbleList = [];
     for(let i = 0; i < 200; i++) {
-      bubbleList.push(<div className="bubble"></div>);
+      bubbleList.push(<div className="bubble" key={i}></div>);
     }
     return bubbleList;
   }
   render() {
     return (
-      <div className="bottom-particles">
-      {this.createBubbles()}
+      <div>
+        <div className="bottom-particles">
+        {this.createBubbles()}
+        </div>
+        <ContainerWrapper >
+          <Sidebar />
+          <Main />
+        </ContainerWrapper>
       </div>
     );
   }

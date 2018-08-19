@@ -14,7 +14,7 @@ export class Main extends Component {
       <MainContainer>
         <p>main container</p>
       </MainContainer>
-    )
+    );
   }
 }
 

@@ -3,6 +3,8 @@ import styled, { injectGlobal } from 'styled-components';
 import Sidebar from './sidebar/sidebar';
 import './App.css';
 import Main from './main/main';
+import { Subscribe } from 'unstated';
+import MainContainer from '../containers/mainContainer';
 
 injectGlobal`
   button {
@@ -23,27 +25,31 @@ const ContainerWrapper = styled.div`
   position: absolute;
   border-radius: 20px;
   background-color: #fff;
-  font-family: 'montserrat-r'
+  font-family: 'montserrat-r';
 `;
 
 class App extends Component {
   createBubbles = () => {
     let bubbleList = [];
-    for(let i = 0; i < 200; i++) {
-      bubbleList.push(<div className="bubble" key={i}></div>);
+    for (let i = 0; i < 200; i++) {
+      bubbleList.push(<div className="bubble" key={i} />);
     }
     return bubbleList;
-  }
+  };
   render() {
     return (
       <div>
-        <div className="bottom-particles">
-        {this.createBubbles()}
-        </div>
-        <ContainerWrapper >
-          <Sidebar />
-          <Main />
-        </ContainerWrapper>
+        <div className="bottom-particles">{this.createBubbles()}</div>
+        <Subscribe to={[MainContainer]}>
+          {mainContainer => {
+            return (
+              <ContainerWrapper>
+                <Sidebar container={mainContainer} />
+                <Main container={mainContainer} />
+              </ContainerWrapper>
+            );
+          }}
+        </Subscribe>
       </div>
     );
   }

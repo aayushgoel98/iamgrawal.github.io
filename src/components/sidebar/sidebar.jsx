@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
+// import packages statements
+import React from 'react';
 import styled from 'styled-components';
 
-//import images statements
+// import containers statements
+import mainContainer from '../../containers/mainContainer';
+
+// import images statements
 import ProfileImg from '../../assets/images/profile.jpg';
 import github from '../../assets/icons/github.svg';
 import google from '../../assets/icons/google.svg';
@@ -12,7 +16,7 @@ const SidebarWrapper = styled.div`
   width: 20%;
   height: 100%;
   float: left;
-  background-color: #EAEAEA;
+  background-color: #eaeaea;
   border-radius: 20px 0 0 20px;
   text-align: center;
 `;
@@ -28,13 +32,13 @@ const DescriptionWrapper = styled.div`
   margin: 1.25rem 0;
 `;
 
-const NameWrapper = styled.p`
+const Name = styled.p`
   font-family: 'montserrat-sb';
   font-size: 1.25rem;
   margin: 0.5rem 0;
 `;
 
-const OneLinerWrapper = styled.p`
+const OneLiner = styled.p`
   font-family: 'montserrat-lt';
   font-size: 1rem;
   margin: 0.5rem 0;
@@ -52,46 +56,108 @@ const MenuList = styled.ul`
 `;
 
 const MenuListItem = styled.li`
-  color: ${props => props.active ? '#f04e4e' : 'black' };
+  color: ${props => (props.active ? '#f04e4e' : 'black')};
   padding: 0.5rem 0;
   font-size: 18px;
+
+  &:hover {
+    cursor: pointer;
+    color: #f04e4e;
+  }
 `;
 
-const SocialIconsWrapper = styled.div`
-`;
+const SocialIconsWrapper = styled.div``;
 
 const SocialIcon = styled.img`
   width: 24px;
   margin: 0.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
 `;
 
-export class Sidebar extends Component {
-  render() {
-    return (
-      <SidebarWrapper>
-        <ImageWrapper src={ProfileImg} alt="profile"/>
-        <DescriptionWrapper>
-          <NameWrapper>Gaurav Rawal</NameWrapper>
-          <OneLinerWrapper>A versatile developer.</OneLinerWrapper>
-        </DescriptionWrapper>
-        <MenuWrapper>
-          <MenuList>
-          <MenuListItem active>About Me</MenuListItem>
-          <MenuListItem>My Experiences</MenuListItem>
-          <MenuListItem>Achievements</MenuListItem>
-          <MenuListItem>Projects</MenuListItem>
-          <MenuListItem>Contact Me</MenuListItem>
-          </MenuList>
-        </MenuWrapper>
-        <SocialIconsWrapper>
-        <SocialIcon src={github}/>
-        <SocialIcon src={google}/>
-        <SocialIcon src={linkedin}/>
-        <SocialIcon src={twitter}/>
-        </SocialIconsWrapper>
-      </SidebarWrapper>
-    )
-  }
-}
+const Sidebar = props => {
+  const menuList = [
+    {
+      name: 'About Me',
+      keyName: 'about'
+    },
+    {
+      name: 'My Experiences',
+      keyName: 'experiences'
+    },
+    {
+      name: 'Achievements',
+      keyName: 'achievement'
+    },
+    {
+      name: 'Projects',
+      keyName: 'project'
+    },
+    {
+      name: 'Contact Me',
+      keyName: 'contact'
+    }
+  ];
+  const socialIcons = [
+    {
+      name: 'github',
+      src: github,
+      link: 'https://github.com/iamgrawal'
+    },
+    {
+      name: 'google',
+      src: google,
+      link: 'mailto:iamgrawal@gmail.com'
+    },
+    {
+      name: 'linkedin',
+      src: linkedin,
+      link: 'https://linkedin.com/in/iamgrawal'
+    },
+    {
+      name: 'twitter',
+      src: twitter,
+      link: 'https://twitter.com/iamgrawal'
+    }
+  ];
+  const handleMenuChange = keyName => {
+    props.container.setState({ active: keyName });
+  };
+  return (
+    <SidebarWrapper>
+      <ImageWrapper src={ProfileImg} alt="profile" />
+      <DescriptionWrapper>
+        <Name>Gaurav Rawal</Name>
+        <OneLiner>A versatile developer.</OneLiner>
+      </DescriptionWrapper>
+      <MenuWrapper>
+        <MenuList>
+          {menuList.map(item => {
+            return (
+              <MenuListItem
+                key={item.keyName}
+                active={props.container.state.active === item.keyName}
+                onClick={() => handleMenuChange(item.keyName)}
+              >
+                {item.name}
+              </MenuListItem>
+            );
+          })}
+        </MenuList>
+      </MenuWrapper>
+      <SocialIconsWrapper>
+        {socialIcons.map(item => {
+          return (
+            <a href={item.link} key={item.name}>
+              <SocialIcon alt={item.name} src={item.src} />
+            </a>
+          );
+        })}
+      </SocialIconsWrapper>
+    </SidebarWrapper>
+  );
+};
 
-export default Sidebar
+export default Sidebar;

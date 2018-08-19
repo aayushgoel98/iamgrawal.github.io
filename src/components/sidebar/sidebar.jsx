@@ -2,9 +2,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-// import containers statements
-import mainContainer from '../../containers/mainContainer';
-
 // import images statements
 import ProfileImg from '../../assets/images/profile.jpg';
 import github from '../../assets/icons/github.svg';

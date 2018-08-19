@@ -5,9 +5,10 @@ import './App.css';
 import Main from './main/main';
 
 injectGlobal`
-  @font-face {
-    font-family: 'Monsterrat';
-    src: url('../fonts/Operator-Mono.ttf');
+  button {
+    background-color: #f04e4e;
+    color: #fff;
+    border-radius: 50%;
   }
 `;
 
@@ -22,7 +23,7 @@ const ContainerWrapper = styled.div`
   position: absolute;
   border-radius: 20px;
   background-color: #fff;
-  font-family: 'monsteratt'
+  font-family: 'montserrat-r'
 `;
 
 class App extends Component {

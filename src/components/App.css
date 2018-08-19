@@ -1,3 +1,25 @@
+/* Import fonts */
+@font-face {
+  font-family: 'montserrat-lt';
+  src: url('../assets/fonts/Montserrat-Light.ttf');
+}
+@font-face {
+  font-family: 'montserrat-r';
+  src: url('../assets/fonts/Montserrat-Regular.ttf');
+}
+@font-face {
+  font-family: 'montserrat-m';
+  src: url('../assets/fonts/Montserrat-Medium.ttf');
+}
+@font-face {
+  font-family: 'montserrat-sb';
+  src: url('../assets/fonts/Montserrat-SemiBold.ttf');
+}
+@font-face {
+  font-family: 'montserrat-b';
+  src: url('../assets/fonts/Montserrat-Bold.ttf');
+}
+
 /* PARTICLES */
 .bottom-particles {
   position: absolute;

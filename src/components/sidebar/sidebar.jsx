@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import ProfileImg from '../../assets/Images/profile.jpg';
+
+//import images statements
+import ProfileImg from '../../assets/images/profile.jpg';
+import github from '../../assets/icons/github.svg';
+import google from '../../assets/icons/google.svg';
+import linkedin from '../../assets/icons/linkedin.svg';
+import twitter from '../../assets/icons/twitter.svg';
 
 const SidebarWrapper = styled.div`
   width: 20%;
@@ -19,6 +25,20 @@ const ImageWrapper = styled.img`
 `;
 
 const DescriptionWrapper = styled.div`
+  margin: 1.25rem 0;
+`;
+
+const NameWrapper = styled.p`
+  font-family: 'montserrat-sb';
+  font-size: 1.25rem;
+  margin: 0.5rem 0;
+`;
+
+const OneLinerWrapper = styled.p`
+  font-family: 'montserrat-lt';
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  opacity: 0.75;
 `;
 
 const MenuWrapper = styled.div`
@@ -27,14 +47,22 @@ const MenuWrapper = styled.div`
 
 const MenuList = styled.ul`
   list-style: none;
+  padding: 0.5rem 0;
+  text-align: center;
 `;
 
 const MenuListItem = styled.li`
   color: ${props => props.active ? '#f04e4e' : 'black' };
-  padding: 5px 0;
+  padding: 0.5rem 0;
+  font-size: 18px;
 `;
 
 const SocialIconsWrapper = styled.div`
+`;
+
+const SocialIcon = styled.img`
+  width: 24px;
+  margin: 0.5rem;
 `;
 
 export class Sidebar extends Component {
@@ -42,7 +70,10 @@ export class Sidebar extends Component {
     return (
       <SidebarWrapper>
         <ImageWrapper src={ProfileImg} alt="profile"/>
-        <DescriptionWrapper />
+        <DescriptionWrapper>
+          <NameWrapper>Gaurav Rawal</NameWrapper>
+          <OneLinerWrapper>A versatile developer.</OneLinerWrapper>
+        </DescriptionWrapper>
         <MenuWrapper>
           <MenuList>
           <MenuListItem active>About Me</MenuListItem>
@@ -52,7 +83,12 @@ export class Sidebar extends Component {
           <MenuListItem>Contact Me</MenuListItem>
           </MenuList>
         </MenuWrapper>
-        <SocialIconsWrapper />
+        <SocialIconsWrapper>
+        <SocialIcon src={github}/>
+        <SocialIcon src={google}/>
+        <SocialIcon src={linkedin}/>
+        <SocialIcon src={twitter}/>
+        </SocialIconsWrapper>
       </SidebarWrapper>
     )
   }

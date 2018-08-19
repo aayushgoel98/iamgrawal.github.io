@@ -1,6 +1,10 @@
 // import packages statements
 import React from 'react';
 import styled from 'styled-components';
+import { Subscribe } from 'unstated';
+
+// import container statements
+import MainContainer from '../../containers/mainContainer';
 
 // import images statements
 import ProfileImg from '../../assets/images/profile.jpg';
@@ -119,9 +123,6 @@ const Sidebar = props => {
       link: 'https://twitter.com/iamgrawal'
     }
   ];
-  const handleMenuChange = keyName => {
-    props.container.setState({ active: keyName });
-  };
   return (
     <SidebarWrapper>
       <ImageWrapper src={ProfileImg} alt="profile" />
@@ -131,17 +132,24 @@ const Sidebar = props => {
       </DescriptionWrapper>
       <MenuWrapper>
         <MenuList>
-          {menuList.map(item => {
-            return (
-              <MenuListItem
-                key={item.keyName}
-                active={props.container.state.active === item.keyName}
-                onClick={() => handleMenuChange(item.keyName)}
-              >
-                {item.name}
-              </MenuListItem>
-            );
-          })}
+          <Subscribe to={[MainContainer]}>
+            {mainContainer => {
+              const handleMenuChange = keyName => {
+                mainContainer.setState({ active: keyName });
+              };
+              return menuList.map(item => {
+                return (
+                  <MenuListItem
+                    key={item.keyName}
+                    active={mainContainer.state.active === item.keyName}
+                    onClick={() => handleMenuChange(item.keyName)}
+                  >
+                    {item.name}
+                  </MenuListItem>
+                );
+              });
+            }}
+          </Subscribe>
         </MenuList>
       </MenuWrapper>
       <SocialIconsWrapper>

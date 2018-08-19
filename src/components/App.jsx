@@ -40,16 +40,14 @@ class App extends Component {
     return (
       <div>
         <div className="bottom-particles">{this.createBubbles()}</div>
-        <Subscribe to={[MainContainer]}>
-          {mainContainer => {
-            return (
-              <ContainerWrapper>
-                <Sidebar container={mainContainer} />
-                <Main container={mainContainer} />
-              </ContainerWrapper>
-            );
-          }}
-        </Subscribe>
+        <ContainerWrapper>
+          <Sidebar />
+          <Subscribe to={[MainContainer]}>
+            {mainContainer => {
+              return <Main container={mainContainer} />;
+            }}
+          </Subscribe>
+        </ContainerWrapper>
       </div>
     );
   }

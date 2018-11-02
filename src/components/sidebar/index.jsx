@@ -7,7 +7,7 @@ import { Subscribe } from 'unstated';
 import MainContainer from '../../containers/mainContainer';
 
 // import images statements
-import ProfileImg from '../../assets/images/profile.jpg';
+import ProfileImg from '../../assets/images/profile2.jpg';
 import github from '../../assets/icons/github.svg';
 import google from '../../assets/icons/google.svg';
 import linkedin from '../../assets/icons/linkedin.svg';
@@ -20,6 +20,7 @@ const SidebarWrapper = styled.div`
   background-color: #eaeaea;
   border-radius: 20px 0 0 20px;
   text-align: center;
+  overflow: hidden;
 `;
 
 const ImageWrapper = styled.img`
@@ -128,7 +129,7 @@ const Sidebar = props => {
       <ImageWrapper src={ProfileImg} alt="profile" />
       <DescriptionWrapper>
         <Name>Gaurav Rawal</Name>
-        <OneLiner>A versatile developer.</OneLiner>
+        <OneLiner>Full Stack Developer.</OneLiner>
       </DescriptionWrapper>
       <MenuWrapper>
         <MenuList>

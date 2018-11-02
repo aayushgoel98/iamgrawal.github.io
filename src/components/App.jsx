@@ -1,10 +1,19 @@
+// import packages statements
 import React, { Component } from 'react';
 import styled, { injectGlobal } from 'styled-components';
-import Sidebar from './sidebar/sidebar';
-import './App.css';
-import Main from './main/main';
 import { Subscribe } from 'unstated';
+
+import Main from './main';
+// import components statements
+import Sidebar from './sidebar';
 import MainContainer from '../containers/mainContainer';
+
+// import stylesheets statements
+import './App.css';
+
+// import assets statements
+import resumeImg from '../assets/icons/resume.svg';
+import resume from "../assets/documents/Gaurav's Resume.pdf";
 
 injectGlobal`
   button {
@@ -27,6 +36,28 @@ const ContainerWrapper = styled.div`
   background-color: #fff;
   font-family: 'montserrat-r';
 `;
+const ResumeDiv = styled.img`
+  position: absolute;
+  z-index: 2;
+  animation: blinking 1s infinite;
+  top: 16px;
+  right: 16px;
+  width: 48px;
+  @keyframes blinking {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.25);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  &:hover {
+    cursor: pointer;
+  }
+`;
 
 class App extends Component {
   createBubbles = () => {
@@ -40,6 +71,9 @@ class App extends Component {
     return (
       <div>
         <div className="bottom-particles">{this.createBubbles()}</div>
+        <a href={resume} target="_blank">
+          <ResumeDiv src={resumeImg} alt="resume icon" />
+        </a>
         <ContainerWrapper>
           <Sidebar />
           <Subscribe to={[MainContainer]}>

@@ -8,6 +8,7 @@ import MainContainer from '../../containers/mainContainer';
 
 // import images statements
 import ProfileImg from '../../assets/images/profile2.jpg';
+import facebook from '../../assets/icons/facebook.svg';
 import github from '../../assets/icons/github.svg';
 import google from '../../assets/icons/google.svg';
 import linkedin from '../../assets/icons/linkedin.svg';
@@ -104,6 +105,11 @@ const Sidebar = props => {
   ];
   const socialIcons = [
     {
+      name: 'facebook',
+      src: facebook,
+      link: 'https://facebook.com/iamgrawal'
+    },
+    {
       name: 'github',
       src: github,
       link: 'https://github.com/iamgrawal'
@@ -156,7 +162,7 @@ const Sidebar = props => {
       <SocialIconsWrapper>
         {socialIcons.map(item => {
           return (
-            <a href={item.link} key={item.name}>
+            <a href={item.link} key={item.name} target="_blank">
               <SocialIcon alt={item.name} src={item.src} />
             </a>
           );

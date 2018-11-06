@@ -77,7 +77,7 @@ const About = props => {
       <section>
         <SectionHeading>Technologies</SectionHeading>
         <SectionPara>
-          These are the technoligies that I have worked upon:
+          These are the technologies that I have worked:
         </SectionPara>
         <SectionBubblesList>
           <SectionBubbles>React.js</SectionBubbles>

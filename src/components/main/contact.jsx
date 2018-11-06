@@ -13,7 +13,7 @@ const Container = styled.div`
   margin: auto;
 `;
 const Heading = styled.h2``;
-const OneLiner = styled.p`
+const Description = styled.p`
   font-family: 'montserrat-lt';
   font-size: 1rem;
   opacity: 0.75;
@@ -42,13 +42,14 @@ const NameField = styled.input`
   width: 240px;
   margin: auto 20px;
   padding-left: 1rem;
+  outline: none;
   &::placeholder {
-    color: #00000023;
+    color: #1f1f1f78;
   }
 `;
 const EmailField = styled(NameField)``;
 const CommentField = styled.textarea`
-  /* display: table-cell; */
+  display: table-cell;
   background-color: #eceaea;
   border-radius: 4px;
   border: 1px solid #b085f3;
@@ -56,12 +57,23 @@ const CommentField = styled.textarea`
   font-family: 'montserrat-lt';
   font-size: 1rem;
   height: 72px;
-  width: 520px;
+  width: 540px;
   padding-top: 0.5rem;
   padding-left: 1rem;
+  outline: none;
   resize: none;
   &::placeholder {
-    color: #00000023;
+    color: #1f1f1f78;
+  }
+  &::-webkit-scrollbar {
+    background-color: #eaeaea;
+    width: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: #eaeaea;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #ed6467;
   }
 `;
 const SendButton = styled.button`
@@ -72,6 +84,7 @@ const SendButton = styled.button`
   border-width: 0px;
   font-family: 'montserrat-lt';
   font-size: 1rem;
+  outline: none;
   &:hover {
     cursor: pointer;
   }
@@ -82,17 +95,17 @@ const Contact = props => {
     <ContactContainer>
       <Container>
         <Heading>Liked my work? Contact Me or Hire Me?</Heading>
-        <OneLiner>
+        <Description>
           Send me an in-mail here or you can ping me on any social media
           platform links given in the sidebar.
-        </OneLiner>
+        </Description>
         <FormContainer>
           <FormRow>
             <NameField placeholder="Full Name" />
             <EmailField placeholder="Email Id" />
           </FormRow>
           <FormRow>
-            <CommentField placeholder="Comment" rows="10" />
+            <CommentField placeholder="Message" />
           </FormRow>
           <FormRow>
             <SendButton>Send</SendButton>
